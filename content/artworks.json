@@ -1,0 +1,74 @@
+[
+  {
+    "title": "Unravelling",
+    "image": "/images/unravelling.webp",
+    "year": "2026",
+    "medium": "Oil on canvas",
+    "dimensions": "120 × 100 cm",
+    "published": true
+  },
+  {
+    "title": "Pleasure Pleasure Pleasure, Death Death Death, Reality Reality Reality",
+    "image": "/images/pleasure-pleasure-pleasure-death-death-death-reality-reality-reality.webp",
+    "year": "2026",
+    "medium": "Oil on canvas",
+    "dimensions": "180 × 140 cm",
+    "published": true
+  },
+  {
+    "title": "Pleasure Pleasure, Death Death, Reality Reality",
+    "image": "/images/pleasure-pleasure-death-death-reality-reality.webp",
+    "year": "2026",
+    "medium": "Oil on canvas",
+    "dimensions": "180 × 140 cm",
+    "published": true
+  },
+  {
+    "title": "Pleasure, Death, Reality",
+    "image": "/images/pleasure-death-reality.webp",
+    "year": "2026",
+    "medium": "Oil on canvas",
+    "dimensions": "180 × 140 cm",
+    "published": true
+  },
+  {
+    "title": "The Space Between Us",
+    "image": "/images/the-space-between-us.webp",
+    "year": "2025–26",
+    "medium": "Oil on canvas",
+    "dimensions": "160 × 120 cm",
+    "published": true
+  },
+  {
+    "title": "The ympe-tre",
+    "image": "/images/the-ympe-tre.webp",
+    "year": "2026",
+    "medium": "Oil on canvas",
+    "dimensions": "140 × 100 cm",
+    "published": true
+  },
+  {
+    "title": "Sprung",
+    "image": "/images/sprung.webp",
+    "year": "2025",
+    "medium": "Oil on canvas",
+    "dimensions": "120 × 160 cm",
+    "published": true
+  },
+  {
+    "title": "The Dancers",
+    "image": "/images/the-dancers.webp",
+    "year": "2025",
+    "medium": "Oil on canvas",
+    "dimensions": "44 × 40 cm",
+    "published": true
+  },
+  {
+    "title": "Regrowth",
+    "image": "/images/regrowth.webp",
+    "year": "2025",
+    "medium": "Oil on canvas",
+    "dimensions": "180 × 160 cm",
+    "published": true
+  }
+]

@@ -1,0 +1,260 @@
+@font-face {
+  font-family: "Noto Sans";
+  src: url("../fonts/noto-sans.woff2") format("woff2");
+  font-weight: 300 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Serif";
+  src: url("../fonts/noto-serif.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  --bg: #fbfaf7;
+  --text: #1d1d1b;
+  --muted: #6f6c66;
+  --serif: "Noto Serif", Georgia, serif;
+  --sans: "Noto Sans", system-ui, sans-serif;
+  --gutter: clamp(16px, 4vw, 48px);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.6 var(--sans);
+  -webkit-font-smoothing: antialiased;
+  /* Footer sits at the bottom of the window when the page is short. */
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+a { color: inherit; }
+
+img { display: block; max-width: 100%; height: auto; }
+
+/* Header */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  padding: 1.25rem var(--gutter);
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(8px);
+}
+
+.site-name {
+  font: 400 clamp(1.5rem, 3vw, 2rem)/1.1 var(--serif);
+  letter-spacing: 0.01em;
+  text-decoration: none;
+}
+
+.site-header nav { display: flex; gap: 1.5rem; }
+
+.site-header nav a {
+  color: var(--muted);
+  font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+  text-decoration: none;
+}
+
+.site-header nav a:hover,
+.site-header nav a[aria-current="page"] { color: var(--text); }
+
+main { flex: 1; padding: 0 var(--gutter); }
+
+/* Gallery: one work after another, each sized to fit the screen. */
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(4rem, 10vw, 8rem);
+  margin: 0;
+  padding: 0.5rem 0 2rem;
+  list-style: none;
+}
+
+.gallery li { width: fit-content; max-width: 100%; }
+
+.gallery button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: zoom-in;
+}
+
+.gallery img {
+  width: auto;
+  max-height: calc(100dvh - 10rem);
+  transition: opacity 0.2s;
+}
+
+.gallery button:hover img { opacity: 0.88; }
+
+.caption {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.caption-title { font-family: var(--serif); font-size: 1.05rem; }
+
+.caption-meta { display: block; color: var(--muted); }
+
+/* About & contact */
+
+.text-section {
+  max-width: 38rem;
+  padding: clamp(2rem, 5vw, 4rem) 0 0;
+}
+
+.text-section h2 {
+  margin: 0 0 1rem;
+  font: 400 1.6rem/1.2 var(--serif);
+}
+
+.text-section p { margin: 0 0 1em; }
+
+.text-section h3 {
+  margin: 2rem 0 0.5rem;
+  font: 400 1.15rem/1.3 var(--serif);
+}
+
+.contact-links { margin: 0; padding: 0; list-style: none; }
+
+.contact-links li { margin-bottom: 0.4rem; }
+
+.site-footer {
+  padding: 1.5rem var(--gutter);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.site-footer p { margin: 0; }
+
+/* Lightbox */
+
+.lightbox {
+  width: 100vw;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.lightbox:focus { outline: none; }
+
+.lightbox[open] {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+}
+
+/* The dialog itself covers the screen, so it can fade over the page. */
+.lightbox::backdrop { background: none; }
+
+.lightbox figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  height: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 4rem 0 1.5rem;
+  position: relative;
+}
+
+.lightbox img {
+  max-height: calc(100dvh - 11.5rem);
+  width: auto;
+  object-fit: contain;
+}
+
+/* The outgoing image and caption during a crossfade, placed by JS beneath
+   the incoming ones. */
+.lightbox img, .lightbox figcaption { position: relative; z-index: 1; }
+.lightbox .lightbox-fading { position: absolute; z-index: 0; pointer-events: none; }
+
+.lightbox figcaption { padding: 0 1rem; text-align: center; font-size: 0.9rem; }
+
+.lightbox .copyright { display: block; margin-top: 0.25rem; color: var(--muted); font-size: 0.8rem; }
+
+.lightbox button {
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font: 300 2.5rem/1 var(--sans);
+  cursor: pointer;
+}
+
+.lightbox button:hover { color: var(--text); }
+
+.lightbox-prev, .lightbox-next { height: 100%; padding: 0 clamp(0.25rem, 2vw, 1.5rem); }
+
+.lightbox-close { position: absolute; z-index: 1; top: 0.75rem; right: 1rem; padding: 0.25rem 0.5rem; }
+
+/* On phones, arrows sit under the image; swiping also works. */
+@media (max-width: 559px) {
+  .lightbox[open] { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr auto; }
+  .lightbox figure { grid-column: 1 / -1; grid-row: 1; padding: 3rem 16px 0.5rem; }
+  .lightbox img { max-height: calc(100dvh - 15.5rem); }
+  .lightbox-prev, .lightbox-next { grid-row: 2; height: auto; padding: 0.5rem 0 1.25rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* Home: headline work */
+
+.featured {
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  padding-top: 0.5rem;
+}
+
+.featured img {
+  width: auto;
+  max-height: calc(100dvh - 14rem);
+}
+
+.featured-caption {
+  /* Match the image's width instead of widening the container. */
+  width: 0;
+  min-width: 100%;
+  margin-top: 0.6rem;
+}
+
+/* On very short screens (landscape phones) let the caption run wider than the
+   image, otherwise it wraps onto several lines and squeezes the image. */
+@media (max-height: 500px) {
+  .featured-caption { width: auto; }
+}
+

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rachel Barlow</title>
+    <meta name="description" content="The work of artist Rachel Barlow" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="preload" href="fonts/noto-sans.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/noto-serif.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/main.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="site-name" href="./" data-site="name">Rachel Barlow</a>
+      <nav>
+        <a href="portfolio">Portfolio</a>
+        <a href="#about">About</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="featured" aria-label="Featured work"></section>
+
+      <section id="about" class="text-section">
+        <h2>About</h2>
+        <div data-site="about"></div>
+        <h3>Contact</h3>
+        <ul class="contact-links"></ul>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span data-year></span> <span data-site="name">Rachel Barlow</span></p>
+    </footer>
+  </body>
+</html>

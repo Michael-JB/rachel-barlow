@@ -1,0 +1,57 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms@0.246.1/schema/sveltia-cms.json
+#
+# Defines the forms shown at /admin. Each save is a commit to the repo.
+
+backend:
+  name: github
+  repo: Michael-JB/rachel-barlow
+  branch: main
+
+media_folder: /images
+public_folder: /images
+
+# Resize and convert uploads in the browser, so full-size phone photos are fine.
+media_libraries:
+  default:
+    config:
+      slugify_filename: true
+      transformations:
+        raster_image:
+          format: webp
+          quality: 85
+          width: 2000
+          height: 2000
+
+collections:
+  - name: content
+    label: Website
+    files:
+      - name: artworks
+        label: Artworks
+        file: content/artworks.json
+        fields:
+          - name: artworks
+            label: Artworks
+            label_singular: Artwork
+            widget: list
+            root: true
+            summary: '{{title}} ({{year}})'
+            thumbnail: image
+            fields:
+              - { name: title, label: Title, widget: string }
+              - { name: image, label: Image, widget: image }
+              - { name: year, label: Year, widget: string, hint: 'e.g. 2026, or 2025–26 for work spanning years' }
+              - { name: medium, label: Medium, widget: string, required: false, hint: 'e.g. Oil on canvas' }
+              - { name: dimensions, label: Dimensions, widget: string, required: false, hint: 'e.g. 40 × 50 cm' }
+              - { name: published, label: Show on website, widget: boolean, default: true, hint: 'Turn off to keep this as a draft' }
+
+      - name: site
+        label: Home, about & contact
+        file: content/site.json
+        fields:
+          - { name: name, label: Name, widget: string }
+          - { name: headline_image, label: Home page image, widget: image }
+          - { name: headline_caption, label: Home page image caption, widget: string, required: false }
+          - { name: about, label: About, widget: text }
+          - { name: email, label: Email, widget: string, required: false }
+          - { name: instagram, label: Instagram handle, widget: string, required: false, hint: 'Without the @' }
